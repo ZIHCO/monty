@@ -8,6 +8,7 @@
 void invalidargc(void)
 {
 	write(STDERR_FILENO, "USAGE: monty file\n", 19);
+	exit(EXIT_FAILURE);
 }
 
 /**
@@ -19,25 +20,48 @@ void invalidargc(void)
  */
 char **splitstr(char *str, char *delim, int wc)
 {
-        char *token = NULL;
-        char *tmp = NULL;
-        char **ptoken;
-        int i = 0;
+	char *token = NULL;
+	char *tmp = NULL;
+	char **ptoken;
+	int i = 0;
 
-        ptoken = malloc(sizeof(char *) * (wc + 1));
-        if (ptoken == NULL)
-                return (NULL);
-        if (str[strlen(str) - 1] == '\n')
-                str[strlen(str) - 1] = '\0';
-        tmp = strdup(str);
-        token = strtok(tmp, delim);
-        while (token)
-        {
-                ptoken[i] = strdup(token);
-                token = strtok(NULL, delim);
-                i++;
-        }
-        ptoken[i] = NULL;
-        free(tmp);
-        return (ptoken);
+	ptoken = malloc(sizeof(char *) * (wc + 1));
+	if (ptoken == NULL)
+		return (NULL);
+	if (str[strlen(str) - 1] == '\n')
+		str[strlen(str) - 1] = '\0';
+	tmp = strdup(str);
+	token = strtok(tmp, delim);
+	while (token)
+	{
+		ptoken[i] = strdup(token);
+		token = strtok(NULL, delim);
+		i++;
+	}
+	ptoken[i] = NULL;
+	free(tmp);
+	return (ptoken);
+}
+
+/**
+ * deniedaccess - write to stderr
+ * str: string argument
+ * Return: void
+ */
+void deniedaccess(char *str)
+{
+	fprintf(stderr, "Error: Can't open file %s\n", str);
+	exit(EXIT_FAILURE);
+}
+
+/**
+ * invalid_op - write to stderr
+ * @str: string argument
+ * @n: integer argument
+ * Return: void
+ */
+void invalid_op(char *str, int n)
+{
+	fprintf(stderr, "L%d: unknown instruction %s\n", n, str);
+	exit(EXIT_FAILURE);
 }
