@@ -26,7 +26,7 @@ int main(int argc, char **argv)
 		invalidargc();
 	if (stream == NULL)
 		deniedaccess(argv[1]);
-	while ((nread = getline(&buff, &len, stream)) != -1)
+	for (; (nread = getline(&buff, &len, stream)) != -1; lc++)
 	{
 		buff[strlen(buff) - 1] = '\0';
 		wc = wordcount(buff);
@@ -43,7 +43,6 @@ int main(int argc, char **argv)
 			else
 				invalid_op(agv[0], lc);
 		}
-		lc++;
 		freevect(agv);
 	}
 if (strlen(buff) > 1)
