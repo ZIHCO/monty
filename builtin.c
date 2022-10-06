@@ -8,7 +8,7 @@
 int check_op(char *str)
 {
 	int i = 0;
-	char *built_op[] = {"push", "pall", NULL};
+	char *built_op[] = {"push", "pall", "pint", NULL};
 
 	while (built_op[i])
 	{
@@ -64,4 +64,16 @@ void pallf(stack_t **stack, unsigned int n)
 		printf("%d\n", (*stack)->n);
 		*stack = (*stack)->next;
 	}
+}
+
+/**
+ * pintf - print top of a stack
+ * @stack: pointer to the stack top
+ * @n: integer
+ * Return: void
+ */
+void pintf(stack_t **stack, unsigned int n)
+{
+	if (n)
+		printf("%d\n", (*stack)->n);
 }

@@ -49,5 +49,6 @@ void deniedaccess(char *str);
 void invalid_op(char *str, int n);
 void not_integer(int n);
 int isinteger(char *str, int n);
+void pintf(stack_t **stack, unsigned int n);
 
 #endif

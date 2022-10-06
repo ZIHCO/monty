@@ -18,7 +18,8 @@ int main(int argc, char **argv)
 	stack_t *head = NULL;
 	instruction_t opcodes[] = {
 		{"push", pushf},
-		{"pall", pallf}
+		{"pall", pallf},
+		{"pint", pintf}
 	};
 
 	if (argc != 2)
@@ -30,14 +31,14 @@ int main(int argc, char **argv)
 		buff[strlen(buff) - 1] = '\0';
 		wc = wordcount(buff);
 		agv = splitstr(buff, " \t", wc);
-		if (agv[1] && strcmp(agv[0], "pall") != 0)
+		if (agv[1] && (strcmp(agv[0], "pall") != 0 || strcmp(agv[0], "pint") != 0))
 			isinteger(agv[1], lc);
 		if (wc > 0)
 		{
 			n = check_op(agv[0]);
 			if (n == 0)
 				opcodes[n].f(&head, atoi(agv[1]));
-			else if (n == 1)
+			else if (n == 1 || n == 2)
 				opcodes[n].f(&head, 1);
 			else
 				invalid_op(agv[0], lc);
