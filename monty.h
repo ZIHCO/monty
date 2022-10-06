@@ -47,5 +47,7 @@ void pallf(stack_t **stack, unsigned int n);
 char **splitstr(char *str, char *delim, int wc);
 void deniedaccess(char *str);
 void invalid_op(char *str, int n);
+void not_integer(int n);
+int isinteger(char *str, int n);
 
 #endif

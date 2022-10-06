@@ -65,3 +65,14 @@ void invalid_op(char *str, int n)
 	fprintf(stderr, "L%d: unknown instruction %s\n", n, str);
 	exit(EXIT_FAILURE);
 }
+
+/**
+ * not_integer - write to stderr
+ * @n: integer argument
+ * Return: void
+ */
+void not_integer(int n)
+{
+	fprintf(stderr, "L%d: usage: push integer\n", n);
+	exit(EXIT_FAILURE);
+}

@@ -8,8 +8,7 @@
  */
 int main(int argc, char **argv)
 {
-
-	FILE *stream;
+	FILE *stream = fopen(argv[1], "r");
 	char *buff = NULL;
 	ssize_t nread;
 	size_t len = 0;
@@ -24,7 +23,6 @@ int main(int argc, char **argv)
 
 	if (argc != 2)
 		invalidargc();
-	stream = fopen(argv[1], "r");
 	if (stream == NULL)
 		deniedaccess(argv[1]);
 	while ((nread = getline(&buff, &len, stream)) != -1)
@@ -32,6 +30,8 @@ int main(int argc, char **argv)
 		buff[strlen(buff) - 1] = '\0';
 		wc = wordcount(buff);
 		agv = splitstr(buff, " \t", wc);
+		if (agv[1] && strcmp(agv[0], "pall") != 0)
+			isinteger(agv[1], lc);
 		if (wc > 0)
 		{
 			n = check_op(agv[0]);
