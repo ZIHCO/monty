@@ -39,7 +39,7 @@ int main(int argc, char **argv)
 			if (n == 0)
 				opcodes[n].f(&head, atoi(agv[1]));
 			else if (n == 1 || n == 2)
-				opcodes[n].f(&head, 1);
+				opcodes[n].f(&head, lc);
 			else
 				invalid_op(agv[0], lc);
 		}

@@ -18,3 +18,14 @@ int isinteger(char *str, int n)
 	}
 	return (0);
 }
+
+/**
+ * emptystack - write to stderr
+ * @n: integer argument
+ * Return: void
+ */
+void emptystack(int n)
+{
+	fprintf(stderr, "L%d: can't pint, stack empty\n", n);
+	exit(EXIT_FAILURE);
+}

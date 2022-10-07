@@ -74,6 +74,8 @@ void pallf(stack_t **stack, unsigned int n)
  */
 void pintf(stack_t **stack, unsigned int n)
 {
-	if (n)
+	if (n && *stack)
 		printf("%d\n", (*stack)->n);
+	else
+		emptystack(n);
 }
