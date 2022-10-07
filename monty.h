@@ -36,6 +36,8 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+extern stack_t *head;
+
 ssize_t getline(char **lineptr, size_t *n, FILE *stream);
 char *strdup(const char *s);
 void invalidargc(void);
@@ -51,5 +53,6 @@ void not_integer(int n);
 int isinteger(char *str, int n);
 void pintf(stack_t **stack, unsigned int n);
 void emptystack(int n);
+void popf(stack_t **stack, unsigned int n);
 
 #endif

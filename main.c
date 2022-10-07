@@ -19,7 +19,8 @@ int main(int argc, char **argv)
 	instruction_t opcodes[] = {
 		{"push", pushf},
 		{"pall", pallf},
-		{"pint", pintf}
+		{"pint", pintf},
+		{"pop", popf}
 	};
 
 	if (argc != 2)
@@ -31,16 +32,17 @@ int main(int argc, char **argv)
 		buff[strlen(buff) - 1] = '\0';
 		wc = wordcount(buff);
 		agv = splitstr(buff, " \t", wc);
-		if (agv[1] && (strcmp(agv[0], "pall") != 0 || strcmp(agv[0], "pint") != 0))
+		if (agv[1] && (strcmp(agv[0], "pall") != 0 || strcmp(agv[0], "pint") != 0 ||
+					strcmp(agv[0], "pop") != 0))
 			isinteger(agv[1], lc);
 		if (wc > 0)
 		{
 			n = check_op(agv[0]);
 			if (n == 0)
 				opcodes[n].f(&head, atoi(agv[1]));
-			else if (n == 1 || n == 2)
+			if (n == 1 || n == 2 || n == 3)
 				opcodes[n].f(&head, lc);
-			else
+			if (n == -1)
 				invalid_op(agv[0], lc);
 		}
 		freevect(agv);

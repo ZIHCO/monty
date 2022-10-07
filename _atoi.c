@@ -29,3 +29,22 @@ void emptystack(int n)
 	fprintf(stderr, "L%d: can't pint, stack empty\n", n);
 	exit(EXIT_FAILURE);
 }
+
+/**
+ * popf - frees the top of the stack
+ * @stack: pointer to the top
+ * Return: void
+ */
+void popf(stack_t **stack, unsigned int n)
+{
+	stack_t *tmp;
+
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", n);
+		exit(EXIT_FAILURE);
+	}
+	tmp = (*stack)->next;
+	free(*stack);
+	*stack = tmp;
+}

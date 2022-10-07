@@ -8,7 +8,7 @@
 int check_op(char *str)
 {
 	int i = 0;
-	char *built_op[] = {"push", "pall", "pint", NULL};
+	char *built_op[] = {"push", "pall", "pint", "pop", NULL};
 
 	while (built_op[i])
 	{
@@ -40,7 +40,7 @@ void pushf(stack_t **stack, unsigned int n)
 	if (*stack)
 	{
 		new->next = *stack;
-		new->prev = (*stack)->prev;
+		new->prev = NULL;
 		(*stack)->prev = new;
 		*stack = new;
 	}
@@ -55,6 +55,7 @@ void pushf(stack_t **stack, unsigned int n)
 /**
  * pallf - prints all the elements of a stack_t
  * @stack: pointer to a stack top
+ * @n: ...
  * Return: void
  */
 void pallf(stack_t **stack, unsigned int n)
