@@ -38,8 +38,13 @@ int main(int argc, char **argv)
 		if (wc > 0)
 		{
 			n = check_op(agv[0]);
-			if (n == 0)
+			if (n == 0 && agv[1])
 				opcodes[n].f(&head, atoi(agv[1]));
+			else if (n == 0)
+			{
+				freevect(agv);
+				isinteger(agv[1], lc);
+			}
 			if (n == 1 || n == 2 || n == 3)
 				opcodes[n].f(&head, lc);
 			if (n == -1)
