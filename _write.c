@@ -7,7 +7,7 @@
  */
 void invalidargc(void)
 {
-	write(STDERR_FILENO, "USAGE: monty file\n", 19);
+	write(STDERR_FILENO, "USAGE: monty file\n", 18);
 	exit(EXIT_FAILURE);
 }
 
@@ -45,7 +45,7 @@ char **splitstr(char *str, char *delim, int wc)
 
 /**
  * deniedaccess - write to stderr
- * str: string argument
+ * @str: string argument
  * Return: void
  */
 void deniedaccess(char *str)

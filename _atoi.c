@@ -33,6 +33,7 @@ void emptystack(int n)
 /**
  * popf - frees the top of the stack
  * @stack: pointer to the top
+ * @n: integer
  * Return: void
  */
 void popf(stack_t **stack, unsigned int n)
