@@ -60,10 +60,13 @@ void pushf(stack_t **stack, unsigned int n)
  */
 void pallf(stack_t **stack, unsigned int n)
 {
-	while (*stack && n)
+	stack_t *top;
+
+	top = *stack;
+	while (top && n)
 	{
-		printf("%d\n", (*stack)->n);
-		*stack = (*stack)->next;
+		printf("%d\n", top->n);
+		top = top->next;
 	}
 }
 

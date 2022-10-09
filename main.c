@@ -40,7 +40,7 @@ int main(int argc, char **argv)
 			n = check_op(agv[0]);
 			if (n == 0 && agv[1])
 				opcodes[n].f(&head, atoi(agv[1]));
-			else if (n == 0)
+			else if (n == 0 && !(agv[1]))
 			{
 				freevect(agv);
 				isinteger(agv[1], lc);
