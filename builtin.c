@@ -62,11 +62,14 @@ void pallf(stack_t **stack, unsigned int n)
 {
 	stack_t *top;
 
-	top = *stack;
-	while (top && n)
+	if (*stack)
 	{
-		printf("%d\n", top->n);
-		top = top->next;
+		top = *stack;
+		while (top && n)
+		{
+			printf("%d\n", top->n);
+			top = top->next;
+		}
 	}
 }
 
