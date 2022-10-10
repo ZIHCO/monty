@@ -55,5 +55,5 @@ int main(int argc, char **argv)
 if (strlen(buff) > 1)
 	free(buff);
 printf("%d\n", 0);
-return (0);
+return (EXIT_SUCCESS);
 }
